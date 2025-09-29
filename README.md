@@ -1,117 +1,147 @@
-# Super Field - Array
+# Super Gallery
 
-A dynamic array input component for Budibase applications with add/remove functionality, type validation, and flexible data entry.
+A versatile image gallery component for Budibase applications with grid, carousel, and marquee display modes for showcasing image collections.
 
 ## 🚀 Features
 
-### Array Management
+### Display Modes
 
-- **Dynamic Arrays**: Add and remove array items dynamically
-- **Type Support**: String, number, and date array types
-- **Field Binding**: Dedicated array field with type safety
-- **Default Values**: Pre-populated array data
-- **Validation**: Array-specific validation rules
+- **Grid Mode**: Responsive grid layout with configurable columns and image ratios
+- **Carousel Mode**: Interactive sliding carousel with navigation controls
+- **Marquee Mode**: Continuous scrolling marquee display
 
-### Data Entry
+### Image Management
 
-- **Item Addition**: Easy addition of new array items
-- **Item Removal**: Delete individual array items
-- **Inline Editing**: Edit items directly in the array
-- **Bulk Operations**: Add multiple items at once
-- **Order Management**: Reorder array items
+- **Array Input**: Accepts arrays of image data from Budibase data sources
+- **Image Ratios**: Landscape, square, and portrait aspect ratios
+- **Responsive Design**: Adapts to different screen sizes and container widths
+
+### Interactive Features
+
+- **Click Actions**: None, view (lightbox), select, or custom event handling
+- **Lightbox Viewing**: Full-screen image viewing with navigation
+- **Touch Support**: Mobile-friendly touch gestures for carousel navigation
+
+### Carousel Controls
+
+- **Navigation Arrows**: Previous/next slide controls
+- **Dot Indicators**: Visual slide position indicators
+- **Autoplay**: Automatic slide progression with configurable timing
+- **Infinite Loop**: Seamless continuous scrolling
+- **Items Configuration**: Control visible items and scroll behavior
 
 ### User Experience
 
-- **Visual Interface**: Clear array item display and management
-- **Event Handling**: On change events with array context
-- **Auto-focus**: Automatic focus for data entry
-- **Debounced Input**: Performance optimization for large arrays
-- **Help Text**: Guidance for array data requirements
-
-### Advanced Features
-
-- **Type Validation**: Data type validation for array items
-- **Conditional Logic**: Dynamic behavior based on array content
-- **Button Integration**: Custom action buttons for array operations
-- **Icon Support**: Visual indicators for array fields
-- **Template Support**: Consistent item formatting
-
-### Styling & Layout
-
-- **Flexible Positioning**: Label placement options
-- **Field Modes**: Form input or inline editing
-- **Size Configuration**: Adjustable component width
-- **Theme Integration**: Consistent with Budibase design
+- **Builder Integration**: Visual placeholder in design mode
+- **Event Handling**: Custom click events for advanced interactions
+- **Performance Optimized**: Efficient rendering for large image collections
+- **Accessibility**: Keyboard navigation and screen reader support
 
 ## 📝 Usage Instructions
 
 ### Basic Setup
 
-1. Add the Super Field - Array component to your form
-2. Bind to an array field in your data source
-3. Select the array item type (string, number, date)
-4. Configure validation and help text
+1. Add the Super Gallery component to your screen
+2. Bind the `value` property to an array field containing image data
+3. Choose your preferred display mode (grid, carousel, or marquee)
+4. Configure image ratio and grid columns for grid mode
+5. Set up carousel settings for carousel/marquee modes
+
+### Display Mode Configuration
+
+#### Grid Mode
+
+- Set `Mode` to "Grid"
+- Choose `Image Ratio` (landscape, square, portrait)
+- Configure `Grid Columns` (1-12 columns)
+- Images will automatically arrange in responsive grid
+
+#### Carousel Mode
+
+- Set `Mode` to "Carousel"
+- Configure `Items to Show` (1-6 visible items)
+- Set `Items to Scroll` (items to advance per navigation)
+- Enable/disable autoplay, dots, and infinite loop
+
+#### Marquee Mode
+
+- Set `Mode` to "Marquee"
+- Same carousel settings apply with continuous scrolling behavior
 
 ### Advanced Configuration
 
-- **Item Types**: Choose appropriate data type for array items
-- **Validation**: Set array size limits and item validation
-- **Buttons**: Configure add/remove action buttons
-- **Events**: Attach actions to array changes
+- **Click Actions**: Choose what happens when users click images
+  - `None`: No action on click
+  - `View`: Opens image in lightbox
+  - `Select`: Triggers selection event
+  - `Custom`: Fires custom event for advanced handling
 
 ### Common Use Cases
 
-- **Tag Management**: User tags or categories
-- **Contact Lists**: Email addresses or phone numbers
-- **Product Options**: Size, color, or feature selections
-- **Task Lists**: To-do items or checklist entries
-- **Data Collections**: Multiple values of the same type
+- **Photo Galleries**: Showcase product images or portfolios
+- **Image Carousels**: Featured content sliders on dashboards
+- **Media Browsers**: Browse through collections of images
+- **Content Showcases**: Display user-generated content
+- **Marketing Banners**: Rotating promotional images
 
 ## 🔧 Configuration Options
 
-| Setting        | Type    | Description                         |
-| -------------- | ------- | ----------------------------------- |
-| Field          | Array   | Array field binding                 |
-| Type           | Select  | Item data type (string/number/date) |
-| Label          | String  | Display label text                  |
-| Placeholder    | String  | Item input guidance                 |
-| Default Value  | Array   | Pre-populated array data            |
-| Help Text      | String  | Help/instruction text               |
-| Validation     | Rules   | Array validation (size/item rules)  |
-| Autofocus      | Boolean | Auto-focus on load                  |
-| Debounced      | Boolean | Enable input debouncing             |
-| Disabled       | Boolean | Disable array editing               |
-| Read Only      | Boolean | Read-only mode                      |
-| Icon           | Icon    | Visual indicator icon               |
-| Field Mode     | Select  | Form or inline input style          |
-| Label Position | Select  | Label placement                     |
-| Size           | Number  | Component width span                |
+| Setting      | Type   | Description                              | Default   |
+| ------------ | ------ | ---------------------------------------- | --------- |
+| Value        | Array  | Array of image data                      | -         |
+| Mode         | Select | Display mode (grid/carousel/marquee)     | grid      |
+| Image Ratio  | Select | Aspect ratio (landscape/square/portrait) | landscape |
+| Grid Columns | Number | Number of columns in grid (1-12)         | 4         |
+| On Click     | Select | Click behavior (none/view/select/custom) | view      |
+
+### Carousel Settings (Carousel/Marquee Mode)
+
+| Setting         | Type    | Description                    | Default |
+| --------------- | ------- | ------------------------------ | ------- |
+| Items to Show   | Number  | Visible items in carousel      | 3       |
+| Items to Scroll | Number  | Items to advance per scroll    | 1       |
+| Autoplay        | Boolean | Enable automatic progression   | false   |
+| Speed (ms)      | Number  | Autoplay interval (1000-10000) | 3000    |
+| Show Dots       | Boolean | Display navigation dots        | true    |
+| Infinite Loop   | Boolean | Seamless continuous scrolling  | true    |
 
 ## 📋 Events
 
-### On Change
+### On Click (Custom Action)
 
-Triggered when array items are added, removed, or modified.
+Triggered when `On Click` is set to "Custom" and user clicks an image.
 
 **Context:**
 
-- `value`: The current array value
-- `field`: The bound field information
+- `item`: The clicked image data
+- `index`: Index of clicked item in array
+- `value`: Complete array of images
+
+```javascript
+// Example: Handle custom click action
+function handleGalleryClick(context) {
+  const { item, index } = context;
+  // Custom logic here
+  console.log(`Clicked image ${index}:`, item);
+}
+```
 
 ## 🎨 Styling
 
 The component supports Budibase's styling system with:
 
-- **Item Layout**: Clean item display and spacing
-- **Action Buttons**: Styled add/remove controls
-- **Validation States**: Error highlighting for invalid items
-- **Responsive**: Mobile-friendly array management
+- **Size**: Control overall component dimensions
+- **Border**: Customize border appearance
+- **Background**: Set background colors and images
+- **Grid Spacing**: Automatic responsive spacing in grid mode
+- **Carousel Theming**: Consistent styling with carousel controls
 
 ## 🔍 Best Practices
 
-- Choose appropriate item types for data consistency
-- Set reasonable limits on array size
-- Provide clear labels for array purposes
-- Consider mobile users for item management
-- Use validation to ensure data quality
-- Test array operations with various item counts
+- Choose appropriate image ratios based on your content type
+- Consider mobile users when setting grid columns and carousel items
+- Use carousel mode for featured content, grid for browsing
+- Enable autoplay sparingly to avoid user distraction
+- Test with various image counts to ensure performance
+- Provide meaningful alt text for accessibility
+- Consider image loading performance with large collections
