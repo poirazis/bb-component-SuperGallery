@@ -1,0 +1,140 @@
+{
+  "type": "component",
+  "metadata": {},
+  "schema": {
+    "name": "bb-component-SuperGallery",
+    "friendlyName": "Super Gallery",
+    "description": "An Array Input Field component for Budibase",
+    "icon": "slideshow",
+    "styles": ["size", "border", "background"],
+    "hasChildren": true,
+    "showEmptyState": false,
+    "context": [
+      {
+        "type": "static",
+        "scope": "global",
+        "values": [
+          {
+            "key": "value",
+            "label": "value",
+            "type": "array"
+          }
+        ]
+      }
+    ],
+    "settings": [
+      {
+        "type": "text",
+        "key": "value",
+        "label": "Value",
+        "placeholder": "Enter a value",
+        "defaultValue": ""
+      },
+      {
+        "type": "select",
+        "label": "Mode",
+        "key": "mode",
+        "defaultValue": "grid",
+        "options": [
+          { "label": "Grid", "value": "grid" },
+          { "label": "Carousel", "value": "carousel" },
+          { "label": "Marquee", "value": "marquee" }
+        ]
+      },
+      {
+        "type": "select",
+        "key": "imageRatio",
+        "label": "Image Ratio",
+        "defaultValue": "landscape",
+        "dependsOn": { "setting": "mode", "value": "grid" },
+        "options": [
+          { "label": "Landscape", "value": "landscape" },
+          { "label": "Square", "value": "square" },
+          { "label": "Portrait", "value": "portrait" }
+        ]
+      },
+      {
+        "type": "number",
+        "key": "gridColumns",
+        "label": "Grid Columns",
+        "dependsOn": { "setting": "mode", "value": "grid" },
+        "defaultValue": 4,
+        "min": 1,
+        "max": 12
+      },
+      {
+        "type": "select",
+        "key": "onClickAction",
+        "label": "On Click",
+        "defaultValue": "view",
+        "options": [
+          { "label": "None", "value": "none" },
+          { "label": "View", "value": "view" },
+          { "label": "Select", "value": "select" },
+          { "label": "Custom", "value": "custom" }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Carousel Settings",
+        "dependsOn": { "setting": "mode", "value": ["carousel", "marquee"] },
+        "settings": [
+          {
+            "type": "number",
+            "key": "carouselItemsToShow",
+            "label": "Items to Show",
+            "defaultValue": 3,
+            "min": 1,
+            "max": 6
+          },
+          {
+            "type": "number",
+            "key": "carouselItemsToScroll",
+            "label": "Items to Scroll",
+            "defaultValue": 1,
+            "min": 1,
+            "max": 6
+          },
+          {
+            "type": "boolean",
+            "key": "carouselAutoplay",
+            "label": "Autoplay",
+            "defaultValue": false
+          },
+          {
+            "type": "number",
+            "key": "carouselAutoplaySpeed",
+            "label": "Speed (ms)",
+            "defaultValue": 3000,
+            "min": 1000,
+            "max": 10000
+          },
+          {
+            "type": "boolean",
+            "key": "carouselDots",
+            "label": "Show Dots",
+            "defaultValue": true
+          },
+          {
+            "type": "boolean",
+            "key": "carouselInfinite",
+            "label": "Infinite Loop",
+            "defaultValue": true
+          }
+        ]
+      },
+      {
+        "section": true,
+        "name": "Events",
+        "settings": [
+          {
+            "type": "event",
+            "key": "onItemClick",
+            "label": "On Click",
+            "dependsOn": { "setting": "onClickAction", "value": "custom" }
+          }
+        ]
+      }
+    ]
+  }
+}
