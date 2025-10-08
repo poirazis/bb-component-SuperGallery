@@ -34,6 +34,7 @@
     gridColumns,
     onClickAction,
     onItemClick,
+    slotted: $component.children > 0,
     // Add carousel settings when in carousel mode
     ...((mode === "carousel" || mode == "marquee") && {
       carouselMode: mode,
@@ -71,7 +72,9 @@
   <Provider data={{ value }} />
   {#if safeValue.length}
     {#if mode === "carousel" || mode === "marquee"}
-      <CellAttachmentSlider value={safeValue} {cellOptions} {height} />
+      <CellAttachmentSlider value={safeValue} {cellOptions} {height}>
+        <slot />
+      </CellAttachmentSlider>
     {:else if mode === "grid"}
       <CellAttachmentExpanded value={safeValue} {cellOptions} {height}>
         <slot />

@@ -131,7 +131,11 @@
             "type": "event",
             "key": "onItemClick",
             "label": "On Click",
-            "dependsOn": { "setting": "onClickAction", "value": "custom" }
+            "dependsOn": { "setting": "onClickAction", "value": "custom" },
+            "context": [
+              { "label": "item", "key": "item" },
+              { "label": "index", "key": "index" }
+            ]
           }
         ]
       }
